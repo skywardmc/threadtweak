@@ -1,5 +1,5 @@
 {
-  "text.autoconfig.smoothboot.title": "Smooth reBoot",
+  "text.autoconfig.smoothboot.title": "ThreadTweak",
   "text.autoconfig.smoothboot.option.threadCount": "Thread Count",
   "text.autoconfig.smoothboot.option.threadCount.bootstrap": "Bootstrap Worker Thread Count",
   "text.autoconfig.smoothboot.option.threadCount.bootstrap.@Tooltip[0]": "Note: Increasing is known to decrease performance.",
