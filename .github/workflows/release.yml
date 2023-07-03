@@ -1,0 +1,27 @@
+name: release
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  make-release:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: Artifacts
+
+      - name: create release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: smoothreboot*.jar
