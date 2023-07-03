@@ -1,7 +1,7 @@
-package io.github.ultimateboomer.smoothboot.mixin;
+package com.github.getchoo.smoothboot.mixin;
 
-import io.github.ultimateboomer.smoothboot.SmoothBoot;
-import io.github.ultimateboomer.smoothboot.util.LoggingForkJoinWorkerThread;
+import com.github.getchoo.smoothboot.SmoothBoot;
+import com.github.getchoo.smoothboot.util.LoggingForkJoinWorkerThread;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Final;

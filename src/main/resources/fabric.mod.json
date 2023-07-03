@@ -1,18 +1,14 @@
 {
   "schemaVersion": 1,
-  "id": "smoothboot",
+  "id": "smoothreboot",
   "version": "${version}",
 
-  "name": "Smooth Boot",
+  "name": "Smooth reBoot",
   "description": "Improve and tweak Minecraft CPU scheduling.",
-  "authors": [
-    "UltimateBoomer",
-    "fantahund"
-  ],
+  "authors": ["getchoo", "UltimateBoomer", "fantahund"],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/smooth-boot",
-    "sources": "https://github.com/UltimateBoomer/mc-smoothboot",
-    "issues": "https://github.com/UltimateBoomer/mc-smoothboot/issues"
+    "sources": "https://github.com/getchoo/smooth-reboot",
+    "issues": "https://github.com/getchoo/smooth-reboot/issues"
   },
 
   "license": "MIT",
@@ -20,26 +16,14 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "io.github.ultimateboomer.smoothboot.SmoothBoot"
-    ],
-    "modmenu": [
-      "io.github.ultimateboomer.smoothboot.config.SmoothBootModMenu"
-    ]
+    "main": ["com.github.getchoo.smoothboot.SmoothBoot"],
+    "modmenu": ["com.github.getchoo.smoothboot.config.SmoothBootModMenu"]
   },
-  "mixins": [
-    "smoothboot.mixins.json"
-  ],
+  "mixins": ["smoothboot.mixins.json"],
   "depends": {
     "fabricloader": ">=0.14.6",
     "fabric": "*",
-    "minecraft": "1.19.4",
+    "minecraft": "1.20.1",
     "java": ">=17"
-  },
-  "custom": {
-    "modupdater": {
-      "strategy": "curseforge",
-      "projectID": 415758
-    }
   }
 }

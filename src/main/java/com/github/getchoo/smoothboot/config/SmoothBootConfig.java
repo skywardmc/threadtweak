@@ -1,6 +1,6 @@
-package io.github.ultimateboomer.smoothboot.config;
+package com.github.getchoo.smoothboot.config;
 
-import io.github.ultimateboomer.smoothboot.SmoothBoot;
+import com.github.getchoo.smoothboot.SmoothBoot;
 import net.minecraft.util.math.MathHelper;
 
 public class SmoothBootConfig {
