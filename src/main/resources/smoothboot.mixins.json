@@ -1,18 +1,11 @@
 {
   "required": true,
-  "minVersion": "0.8",
-  "package": "io.github.ultimateboomer.smoothboot.mixin",
+  "minVerscomn": "0.8",
+  "package": "com.github.getchoo.smoothboot.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-  	"UtilMixin"
-  ],
-  "client": [
-    "client.MainMixin",
-    "client.IntegratedServerMixin"
-  ],
-  "server": [
-  	"server.MainMixin"
-  ],
+  "mixins": ["UtilMixin"],
+  "client": ["client.MainMixin", "client.IntegratedServerMixin"],
+  "server": ["server.MainMixin"],
   "injectors": {
     "defaultRequire": 1
   }

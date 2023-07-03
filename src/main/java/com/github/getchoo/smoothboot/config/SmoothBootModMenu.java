@@ -1,4 +1,4 @@
-package io.github.ultimateboomer.smoothboot.config;
+package com.github.getchoo.smoothboot.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

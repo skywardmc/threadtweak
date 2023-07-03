@@ -1,7 +1,7 @@
-package io.github.ultimateboomer.smoothboot;
+package com.github.getchoo.smoothboot;
 
-import io.github.ultimateboomer.smoothboot.config.ConfigHandler;
-import io.github.ultimateboomer.smoothboot.config.SmoothBootConfig;
+import com.github.getchoo.smoothboot.config.ConfigHandler;
+import com.github.getchoo.smoothboot.config.SmoothBootConfig;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,8 +9,8 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 
 public class SmoothBoot implements ModInitializer {
-	public static final String MOD_ID = "smoothboot";
-	public static final String NAME = "Smooth Boot";
+	public static final String MOD_ID = "threadtweak";
+	public static final String NAME = "ThreadTweak";
 	
 	public static final Logger LOGGER = LogManager.getLogger(NAME);
 	

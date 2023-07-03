@@ -1,4 +1,4 @@
-package io.github.ultimateboomer.smoothboot.util;
+package com.github.getchoo.smoothboot.util;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinWorkerThread;
