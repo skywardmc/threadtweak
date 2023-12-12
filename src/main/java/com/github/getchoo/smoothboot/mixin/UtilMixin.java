@@ -30,10 +30,7 @@ public abstract class UtilMixin {
 	
 	@Shadow @Final @Mutable
 	private static ExecutorService IO_WORKER_EXECUTOR;
-	
-	@Shadow @Final
-	private static AtomicInteger NEXT_WORKER_ID;
-	
+
 	@Shadow
 	private static void uncaughtExceptionHandler(Thread thread, Throwable throwable) {}
 
@@ -73,9 +70,11 @@ public abstract class UtilMixin {
 			SmoothBoot.initConfig = true;
 		}
 
+		AtomicInteger atomicInteger = new AtomicInteger(1);
+
 		return new ForkJoinPool(MathHelper.clamp(select(name, SmoothBoot.config.threadCount.bootstrap,
 			SmoothBoot.config.threadCount.main), 1, 0x7fff), (forkJoinPool) -> {
-				String workerName = "Worker-" + name + "-" + NEXT_WORKER_ID.getAndIncrement();
+				String workerName = "Worker-" + name + "-" + atomicInteger.getAndIncrement();
 				SmoothBoot.LOGGER.debug("Initialized " + workerName);
 
 				ForkJoinWorkerThread forkJoinWorkerThread = new LoggingForkJoinWorkerThread(forkJoinPool, SmoothBoot.LOGGER);
@@ -90,8 +89,10 @@ public abstract class UtilMixin {
 	 * Replace
 	 */
 	private static ExecutorService replIoWorker() {
+		AtomicInteger atomicInteger = new AtomicInteger(1);
+
 		return Executors.newCachedThreadPool((runnable) -> {
-			String workerName = "IO-Worker-" + NEXT_WORKER_ID.getAndIncrement();
+			String workerName = "IO-Worker-" + atomicInteger.getAndIncrement();
 			SmoothBoot.LOGGER.debug("Initialized " + workerName);
 			
 			Thread thread = new Thread(runnable);
