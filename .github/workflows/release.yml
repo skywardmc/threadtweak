@@ -1,4 +1,5 @@
-name: release
+name: Release
+
 on:
   push:
     tags:
@@ -12,15 +13,18 @@ jobs:
     uses: ./.github/workflows/build.yml
 
   make-release:
-    runs-on: ubuntu-latest
+    name: Create release
     needs: build
 
-    steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: Artifacts
+    runs-on: ubuntu-latest
 
-      - name: create release
+    steps:
+      - name: Download artifacts 
+        uses: actions/download-artifact@v4
+        with:
+          name: jars
+
+      - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           draft: true
