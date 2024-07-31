@@ -8,9 +8,23 @@ name: CI
 on:
   push:
     branches: [main]
+    paths:
+      - "src/**"
+      - "gradle/**"
+      - "**.gradle"
+      - "gradlew*"
+      - "gradle.properties"
     tags-ignore:
       - "**"
+
   pull_request:
+    paths:
+      - "src/**"
+      - "gradle/**"
+      - "**.gradle"
+      - "gradlew*"
+      - "gradle.properties"
+
   workflow_dispatch:
   workflow_call:
 
@@ -20,11 +34,8 @@ jobs:
 
     strategy:
       matrix:
-        # Use these Java versions
-        java: [
-            21, # Current Java LTS & minimum supported by Minecraft
-          ]
-        # and run on both Linux and Windows
+        java:
+          - 21 # Current Java LTS & minimum supported by Minecraft
         os: [ubuntu-latest, windows-latest]
 
     runs-on: ${{ matrix.os }}
