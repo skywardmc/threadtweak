@@ -1,31 +1,51 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - "*"
-
-permissions:
-  contents: write
+  release:
+    types: [published]
 
 jobs:
   build:
     uses: ./.github/workflows/build.yml
 
   make-release:
-    name: Create release
+    name: Create
     needs: build
 
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     steps:
       - name: Download artifacts 
         uses: actions/download-artifact@v4
         with:
           name: jars
+          path: jars
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: Kir-Antipov/mc-publish@v3
+        env:
+          VERSION: ${{ github.ref_name }}
         with:
-          draft: true
-          files: threadtweak*.jar
+          modrinth-id: threadtweak
+          modrinth-featured: true
+          modrinth-unfeature-mode: any
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          github-tag: ${{ github.ref_name }}
+          github-token: ${{ github.token }}
+
+          files: |
+            jars/!(*-@(dev|sources|javadoc)).jar
+            jars/*-@(dev|sources|javadocs).jar
+
+          name: ThreadTweak ${{ env.VERSION }}
+          version: ${{ env.VERSION }}
+          version-type: release
+          changelog: ${{ github.event.release.body }}
+
+          loaders: |
+            fabric
+            quilt
