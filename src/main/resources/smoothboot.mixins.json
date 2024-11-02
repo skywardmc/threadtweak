@@ -1,6 +1,6 @@
 {
   "required": true,
-  "minVerscomn": "0.8",
+  "minVersion": "0.8",
   "package": "com.github.getchoo.smoothboot.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": ["UtilMixin"],
