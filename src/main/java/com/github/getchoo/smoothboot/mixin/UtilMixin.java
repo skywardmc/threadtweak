@@ -4,10 +4,8 @@ import com.github.getchoo.smoothboot.SmoothBoot;
 import com.github.getchoo.smoothboot.util.LoggingForkJoinWorkerThread;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
+import net.minecraft.util.thread.NameableExecutor;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -26,10 +24,10 @@ public abstract class UtilMixin {
 	private static ExecutorService BOOTSTRAP_EXECUTOR;*/
 	
 	@Shadow @Final @Mutable
-	private static ExecutorService MAIN_WORKER_EXECUTOR;
+	private static NameableExecutor MAIN_WORKER_EXECUTOR;
 	
 	@Shadow @Final @Mutable
-	private static ExecutorService IO_WORKER_EXECUTOR;
+	private static NameableExecutor IO_WORKER_EXECUTOR;
 
 	@Shadow
 	private static void uncaughtExceptionHandler(Thread thread, Throwable throwable) {}
@@ -64,7 +62,8 @@ public abstract class UtilMixin {
 	/**
 	 * Replace
 	 */
-	private static ExecutorService replWorker(String name) {
+	@Unique
+	private static NameableExecutor replWorker(String name) {
 		if (!SmoothBoot.initConfig) {
 			SmoothBoot.regConfig();
 			SmoothBoot.initConfig = true;
@@ -72,8 +71,8 @@ public abstract class UtilMixin {
 
 		AtomicInteger atomicInteger = new AtomicInteger(1);
 
-		return new ForkJoinPool(MathHelper.clamp(select(name, SmoothBoot.config.threadCount.bootstrap,
-			SmoothBoot.config.threadCount.main), 1, 0x7fff), (forkJoinPool) -> {
+		ExecutorService service = new ForkJoinPool(MathHelper.clamp(select(name, SmoothBoot.config.threadCount.bootstrap,
+			SmoothBoot.config.threadCount.main), 1, 0x7fff), forkJoinPool -> {
 				String workerName = "Worker-" + name + "-" + atomicInteger.getAndIncrement();
 				SmoothBoot.LOGGER.debug("Initialized " + workerName);
 
@@ -83,15 +82,18 @@ public abstract class UtilMixin {
 				forkJoinWorkerThread.setName(workerName);
 				return forkJoinWorkerThread;
 		}, UtilMixin::uncaughtExceptionHandler, true);
+
+		return new NameableExecutor(service);
 	}
 
 	/**
 	 * Replace
 	 */
-	private static ExecutorService replIoWorker() {
+	@Unique
+	private static NameableExecutor replIoWorker() {
 		AtomicInteger atomicInteger = new AtomicInteger(1);
 
-		return Executors.newCachedThreadPool((runnable) -> {
+		ExecutorService service = Executors.newCachedThreadPool(runnable -> {
 			String workerName = "IO-Worker-" + atomicInteger.getAndIncrement();
 			SmoothBoot.LOGGER.debug("Initialized " + workerName);
 			
@@ -102,8 +104,11 @@ public abstract class UtilMixin {
 			thread.setUncaughtExceptionHandler(UtilMixin::uncaughtExceptionHandler);
 			return thread;
 		});
+
+		return new NameableExecutor(service);
 	}
 	
+	@Unique
 	private static <T> T select(String name, T bootstrap, T main) {
 		return Objects.equals(name, "Bootstrap") ? bootstrap : main;
 	}
