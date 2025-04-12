@@ -33,6 +33,7 @@ jobs:
     name: Build
 
     strategy:
+      fail-fast: false
       matrix:
         java:
           - 21 # Current Java LTS & minimum supported by Minecraft
