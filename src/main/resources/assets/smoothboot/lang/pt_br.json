@@ -1,0 +1,16 @@
+{
+  "text.autoconfig.smoothboot.title": "ThreadTweak",
+  "text.autoconfig.smoothboot.option.threadCount": "Número de Threads",
+  "text.autoconfig.smoothboot.option.threadCount.bootstrap": "Threads na Inicialização",
+  "text.autoconfig.smoothboot.option.threadCount.bootstrap.@Tooltip[0]": "Atenção: Sabe-se que o aumento diminui o desempenho.",
+  "text.autoconfig.smoothboot.option.threadCount.bootstrap.@Tooltip[1]": "Melhor deixar em 1.",
+  "text.autoconfig.smoothboot.option.threadCount.main": "Thread do Processo Principal",
+  "text.autoconfig.smoothboot.option.threadCount.main.@Tooltip[0]": "Esse número influencia bastante o tempo de carregamento.",
+  "text.autoconfig.smoothboot.option.threadCount.main.@Tooltip[1]": "Pode impactar o desempenho durante o jogo também.",
+  "text.autoconfig.smoothboot.option.threadPriority": "Prioridade das Threads",
+  "text.autoconfig.smoothboot.option.threadPriority.game": "Prioridade da Thread do Jogo",
+  "text.autoconfig.smoothboot.option.threadPriority.bootstrap": "Prioridade da Inicialização",
+  "text.autoconfig.smoothboot.option.threadPriority.main": "Prioridade do Processo Principal",
+  "text.autoconfig.smoothboot.option.threadPriority.io": "Prioridade do IO",
+  "text.autoconfig.smoothboot.option.threadPriority.integratedServer": "Prioridade do Servidor Integrado"
+}
