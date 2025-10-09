@@ -74,7 +74,7 @@ public abstract class UtilMixin {
 		ExecutorService service = new ForkJoinPool(MathHelper.clamp(select(name, SmoothBoot.config.threadCount.bootstrap,
 			SmoothBoot.config.threadCount.main), 1, 0x7fff), forkJoinPool -> {
 				String workerName = "Worker-" + name + "-" + atomicInteger.getAndIncrement();
-				SmoothBoot.LOGGER.debug("Initialized " + workerName);
+                SmoothBoot.LOGGER.debug("Initialized {}", workerName);
 
 				ForkJoinWorkerThread forkJoinWorkerThread = new LoggingForkJoinWorkerThread(forkJoinPool, SmoothBoot.LOGGER);
 				forkJoinWorkerThread.setPriority(select(name, SmoothBoot.config.threadPriority.bootstrap,
@@ -95,7 +95,7 @@ public abstract class UtilMixin {
 
 		ExecutorService service = Executors.newCachedThreadPool(runnable -> {
 			String workerName = "IO-Worker-" + atomicInteger.getAndIncrement();
-			SmoothBoot.LOGGER.debug("Initialized " + workerName);
+            SmoothBoot.LOGGER.debug("Initialized {}", workerName);
 			
 			Thread thread = new Thread(runnable);
 			thread.setName(workerName);
