@@ -1,12 +1,12 @@
 plugins {
-    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'fabric-loom' version '1.11-SNAPSHOT'
 }
 
 version = "${project.mod_version}+mc${project.minecraft_version}"
 group = project.maven_group
 
 repositories {
-    maven { url "https://maven.terraformersmc.com" }
+    maven { url = "https://maven.terraformersmc.com" }
 }
 
 dependencies {
@@ -23,7 +23,7 @@ dependencies {
 
 processResources {
     inputs.property "version", project.version
-    filteringCharset "UTF-8"
+    filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
         expand "version": project.version

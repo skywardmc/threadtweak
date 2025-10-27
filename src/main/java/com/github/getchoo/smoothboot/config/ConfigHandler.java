@@ -16,7 +16,7 @@ public class ConfigHandler {
 
     public static SmoothBootConfig readConfig() throws IOException {
         String configPath = System.getProperty("user.dir") + "/config/" + SmoothBoot.MOD_ID + ".json";
-        SmoothBoot.LOGGER.debug("Config path: " + configPath);
+        SmoothBoot.LOGGER.debug("Config path: {}", configPath);
 
         // Read config
         SmoothBootConfig config;
@@ -30,7 +30,7 @@ public class ConfigHandler {
                 GSON.toJson(config, writer);
             }
 
-            SmoothBoot.LOGGER.debug("Config: " + config);
+            SmoothBoot.LOGGER.debug("Config: {}", config);
         } catch (NullPointerException | JsonParseException | IOException e) {
             // Create new config
             config = new SmoothBootConfig();

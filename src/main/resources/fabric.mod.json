@@ -21,9 +21,9 @@
   },
   "mixins": ["smoothboot.mixins.json"],
   "depends": {
-    "fabricloader": ">=0.15",
+    "fabricloader": ">=0.17",
     "fabric-api": "*",
-    "minecraft": ">=1.21.3",
+    "minecraft": ">=1.21.9",
     "java": ">=21"
   }
 }
