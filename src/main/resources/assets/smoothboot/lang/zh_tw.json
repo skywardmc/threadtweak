@@ -1,0 +1,16 @@
+{
+  "text.autoconfig.smoothboot.title": "ThreadTweak",
+  "text.autoconfig.smoothboot.option.threadCount": "執行緒數量",
+  "text.autoconfig.smoothboot.option.threadCount.bootstrap": "啟動工作執行緒數量",
+  "text.autoconfig.smoothboot.option.threadCount.bootstrap.@Tooltip[0]": "注意：增加此值已知會降低效能。",
+  "text.autoconfig.smoothboot.option.threadCount.bootstrap.@Tooltip[1]": "建議保持為1。",
+  "text.autoconfig.smoothboot.option.threadCount.main": "主要工作執行緒數量",
+  "text.autoconfig.smoothboot.option.threadCount.main.@Tooltip[0]": "此值會顯著影響載入時間。",
+  "text.autoconfig.smoothboot.option.threadCount.main.@Tooltip[1]": "也可能影響遊戲內效能。",
+  "text.autoconfig.smoothboot.option.threadPriority": "執行緒優先級",
+  "text.autoconfig.smoothboot.option.threadPriority.game": "遊戲執行緒優先級",
+  "text.autoconfig.smoothboot.option.threadPriority.bootstrap": "啟動工作執行緒優先級",
+  "text.autoconfig.smoothboot.option.threadPriority.main": "主要工作執行緒優先級",
+  "text.autoconfig.smoothboot.option.threadPriority.io": "IO工作執行緒優先級",
+  "text.autoconfig.smoothboot.option.threadPriority.integratedServer": "集成伺服器端執行緒優先級"
+}
