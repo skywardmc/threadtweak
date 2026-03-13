@@ -1,0 +1,16 @@
+{
+  "text.autoconfig.smoothboot.title": "ThreadTweak",
+  "text.autoconfig.smoothboot.option.threadCount": "线程数量",
+  "text.autoconfig.smoothboot.option.threadCount.bootstrap": "启动工作线程数量",
+  "text.autoconfig.smoothboot.option.threadCount.bootstrap.@Tooltip[0]": "注意：增加该值已知会降低性能。",
+  "text.autoconfig.smoothboot.option.threadCount.bootstrap.@Tooltip[1]": "建议保持为1。",
+  "text.autoconfig.smoothboot.option.threadCount.main": "主工作线程数量",
+  "text.autoconfig.smoothboot.option.threadCount.main.@Tooltip[0]": "该值会显著影响加载时间。",
+  "text.autoconfig.smoothboot.option.threadCount.main.@Tooltip[1]": "也可能影响游戏内性能。",
+  "text.autoconfig.smoothboot.option.threadPriority": "线程优先级",
+  "text.autoconfig.smoothboot.option.threadPriority.game": "游戏线程优先级",
+  "text.autoconfig.smoothboot.option.threadPriority.bootstrap": "启动工作线程优先级",
+  "text.autoconfig.smoothboot.option.threadPriority.main": "主工作线程优先级",
+  "text.autoconfig.smoothboot.option.threadPriority.io": "IO工作线程优先级",
+  "text.autoconfig.smoothboot.option.threadPriority.integratedServer": "集成服务端线程优先级"
+}
